@@ -1,9 +1,27 @@
 ### Step 1 - Store data in a .txt
 import time
 
+books = [{
+    "title": "The Alchemist", 
+    "author": "Paul Coelho", 
+    "year": 1998, 
+    "rating": 10, 
+    "pages":389, 
+    "price":17
+    },
+    {"title": "Hunger Games", 
+    "author": "Collins", 
+    "year": 2008, 
+    "rating": 10,
+    "pages":489, 
+    "price":16
+    },
+    ]
 
 with open("library.txt", "w") as f:
     f.write("The Alchemist, Paul Coelho, 1998, 10, 389, 17\n")
+    f.write("The Hungry Games, Collins, 2008, 10, 400, 18\n")
+
 
 ## This step's instructions explains how to use the open() function, to write and read info from a .txt file. Follow the instructions to create and call a function to add a book, based off of the previous dictionaries for our library, to the .txt file properly formatted with commas as separators.
 
@@ -41,9 +59,12 @@ def inputs():
         "pages": pages,
         "price": price
     }
+    books.append(book_dictionary)
     with open("library.txt", "a") as f:
         f.write(f"{title}, {author}, {year}, {rating}, {pages}, {price} \n")
         print(book_dictionary)
+    time.sleep(4)
+
 
 ### Step 2 - Read data from a .txt
 
@@ -63,7 +84,10 @@ def open_my_books():
                 "pages": int(pages),
                 "price": float(price)
             }
-            print(book_dictionary)
+        print(books)
+        time.sleep(10)
+            
+
 
 
 ### Step 3 - if __name__ == "__main__":
@@ -73,9 +97,8 @@ def open_my_books():
 
 def main_menu():
         while True:
-            print('hello welcome to daniels perfect book library!')
-            print('you can see my books or create a book for me to check out!')
-            printer =  print("enter 1: for create a book\nenter 2 for access to my favorite books\nenter 3 to create a list of your favorite books!")
+            print('Hello and welcome to Daniels perfect library!')
+            printer =  print("Enter 1 for create a book\nEnter 2 for access to my favorite books\nEnter 3 to create a list of your own favorite books!\nEnter 4 to select a specific book!\nEnter 5 to get the average ratings!")
             try:
                 main = int(input(""))
             except:
@@ -86,11 +109,13 @@ def main_menu():
                 open_my_books()
             elif main == 3:
                 create_your_own()
-            elif main == 94:
-                print('you guessed the right number!')
+            elif main == 4:
+                get_book()
+            elif main == 5:
+                get_avg_rating()
+            else:
+                main_menu()
 # Code this at the bottom of the script
-
-
 
 ### Step 4 - Expand and refactor
 
@@ -129,13 +154,37 @@ def create_your_own():
         "pages": pages,
         "price": price
     }
-    with open("users.txt", "w") as f:
+    with open("users.txt", "a") as f:
         f.write(f"{title}, {author}, {year}, {rating}, {pages}, {price} \n")
         print(book_dictionary)
         print('...initializing book')
         time.sleep(4)
 
+def get_book():
+    with open("library.txt", "r") as f:
+        file = f.readlines()
+    print(f'chose any number to get any book 0 of {len(file)}')
+    try:
+        index = int(input("find your book using numbers!\n"))
+    except:
+         index = int(input("find your book!"))
+    index -= 1
+    print(file[index])
+    time.sleep(4)
 
+
+def get_avg_rating():
+    with open("library.txt", "r") as f:
+        file = f.readlines()
+    ratings = []
+    for index in books:
+        index = index["rating"]
+        ratings.append(index)
+    print("calculating...")
+    time.sleep(2)
+    print(sum(ratings)/len(file))
+    time.sleep(3)
+    
 
 if __name__ == '__main__':
     main_menu()
