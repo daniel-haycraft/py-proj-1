@@ -1,3 +1,4 @@
+
 ### Step 1 - Store data in a .txt
 import time
 
@@ -96,9 +97,10 @@ def open_my_books():
 ## Wrap your main menu function call in an "if __name__ == '__main__':" statement to ensure it doesn't accidentally run if this file is imported as a module elsewhere.
 
 def main_menu():
-        while True:
+        chicken = True
+        while chicken:
             print('Hello and welcome to Daniels perfect library!')
-            printer =  print("Enter 1 for create a book\nEnter 2 for access to my favorite books\nEnter 3 to create a list of your own favorite books!\nEnter 4 to select a specific book!\nEnter 5 to get the average ratings!")
+            printer =  print("Enter 1 for create a book\nEnter 2 for access to my favorite books\nEnter 3 to create a list of your own favorite books!\nEnter 4 to select a specific book!\nEnter 5 to get the average ratings!\nEnter 6 to say good-bye")
             try:
                 main = int(input(""))
             except:
@@ -113,6 +115,9 @@ def main_menu():
                 get_book()
             elif main == 5:
                 get_avg_rating()
+            elif main == 6:
+                chicken = False
+                print('okay bye!')
             else:
                 main_menu()
 # Code this at the bottom of the script
@@ -120,7 +125,6 @@ def main_menu():
 ### Step 4 - Expand and refactor
 
 ## Now follow the instructions in this final step. Expand your project. Clean up the code. Make your application functional. Great job getting your first Python application finished!
-
 def create_your_own():
     try:
         title  = str(input("name of title "))
