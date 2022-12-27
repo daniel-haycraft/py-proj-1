@@ -18,10 +18,10 @@ books = [{
     "price":16
     },
     ]
-
-with open("library.txt", "w") as f:
-    f.write("The Alchemist, Paul Coelho, 1998, 10, 389, 17\n")
-    f.write("The Hungry Games, Collins, 2008, 10, 400, 18\n")
+def  create_txt():
+    with open("library.txt", "w") as idk:
+        idk.write("The Alchemist, Paul Coelho, 1998, 10, 389, 17\n")
+        idk.write("The Hungry Games, Collins, 2008, 10, 400, 18\n")
 
 
 ## This step's instructions explains how to use the open() function, to write and read info from a .txt file. Follow the instructions to create and call a function to add a book, based off of the previous dictionaries for our library, to the .txt file properly formatted with commas as separators.
@@ -61,8 +61,8 @@ def inputs():
         "price": price
     }
     books.append(book_dictionary)
-    with open("library.txt", "a") as f:
-        f.write(f"{title}, {author}, {year}, {rating}, {pages}, {price} \n")
+    with open("library.txt", "a") as idk:
+        idk.write(f"{title}, {author}, {year}, {rating}, {pages}, {price} \n")
         print(book_dictionary)
     time.sleep(4)
 
@@ -73,8 +73,8 @@ def inputs():
 
 # Code here
 def open_my_books():
-    with open("library.txt", "r") as f:
-        file = f.readlines()
+    with open("library.txt", "r") as idk:
+        file = idk.readlines()
         for line in file:
             title, author, year, rating, pages, price = line.split(", ")
             book_dictionary = {
@@ -158,15 +158,15 @@ def create_your_own():
         "pages": pages,
         "price": price
     }
-    with open("users.txt", "a") as f:
-        f.write(f"{title}, {author}, {year}, {rating}, {pages}, {price} \n")
+    with open("users.txt", "a") as idk:
+        idk.write(f"{title}, {author}, {year}, {rating}, {pages}, {price} \n")
         print(book_dictionary)
         print('...initializing book')
         time.sleep(4)
 
 def get_book():
-    with open("library.txt", "r") as f:
-        file = f.readlines()
+    with open("library.txt", "r") as idk:
+        file = idk.readlines()
     print(f'chose any number to get any book 0 of {len(file)}')
     try:
         index = int(input("find your book using numbers!\n"))
@@ -178,8 +178,8 @@ def get_book():
 
 
 def get_avg_rating():
-    with open("library.txt", "r") as f:
-        file = f.readlines()
+    with open("library.txt", "r") as idk:
+        file = idk.readlines()
     ratings = []
     for index in books:
         index = index["rating"]
@@ -192,3 +192,4 @@ def get_avg_rating():
 
 if __name__ == '__main__':
     main_menu()
+    create_txt()
